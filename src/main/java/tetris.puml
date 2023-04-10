@@ -1,27 +1,47 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+abstract Piece
+class Tetromino
+abstract Block
+class Point
+class Board
+class Tetris
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+Piece <|-- Tetromino
+Tetromino <|---- OTetromino
+Tetromino <|-- ITetromino
+Tetromino <|---- LTetromino
+Tetromino <|-- JTetromino
+Tetromino <|---- TTetromino
+Tetromino <|-- ZTetromino
+Tetromino <|---- STetromino
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+Block -- Point
+Tetris *-- Board
 
-class ArrayList {
-Object[] elementData
-size()
+abstract Board {
+    Block[20][10]
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+abstract Piece {
+    Optional<Block>[][]
+    pivot: Point
+    positions: Point[][]
+}
+
+class Point {
+    row: int
+    column: int
+}
+
+abstract Block {
+    position: Point
+    width: int
+    height: int
+    color: Color
+
+    setPositon(Point)
 }
 
 @enduml
