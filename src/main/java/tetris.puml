@@ -5,8 +5,9 @@ abstract Piece
 class Tetromino
 abstract Block
 class Point
-class Board
+class GameBoard
 class Tetris
+class Grid
 
 Piece <|-- Tetromino
 Tetromino <|---- OTetromino
@@ -18,7 +19,16 @@ Tetromino <|-- ZTetromino
 Tetromino <|---- STetromino
 
 Block -- Point
-Tetris *-- Board
+Tetris *-- GameBoard
+GameBoard *-- Playfield
+Playfield *-- Grid
+
+class Grid {
+    blocks: List<Block>
+    getFilledRows(): List<Block>
+    removeRow(row:int)
+    addBlocks(blocks:List<Block>)
+}
 
 abstract Board {
     Block[20][10]

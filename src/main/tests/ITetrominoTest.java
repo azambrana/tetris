@@ -20,7 +20,7 @@ class ITetrominoTest {
         int rows = cells.length;
         int columns = cells[0].length;
 
-        Block red = new Block(ITetromino.WIDTH, ITetromino.HEIGHT, Color.RED);
+        Block red = new Block(Playfield.BLOCK_WIDTH, Playfield.BLOCK_HEIGHT, Color.RED);
 
         Optional<? extends Block>[][] initialState = new Optional[][]{
                 {Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()},
@@ -30,9 +30,7 @@ class ITetrominoTest {
         };
 
         assertArrayEquals(initialState, cells);
-
-        printCells(cells, rows, columns);
-
+        System.out.println(tetromino);
     }
 
     @Test
@@ -47,12 +45,12 @@ class ITetrominoTest {
         Optional<? extends Block>[][] cells = tetromino.getCells();
         int rows = cells.length;
         int columns = cells[0].length;
-        printCells(cells, rows, columns);
+        System.out.println(tetromino);
         Optional<? extends Block>[][] newCells = tetromino.rotateRight();;
 
-        printCells(newCells, rows, columns);
+        System.out.println(tetromino);
 
-        Block red = new Block(ITetromino.WIDTH, ITetromino.HEIGHT, Color.RED);
+        Block red = new Block(Playfield.BLOCK_WIDTH, Playfield.BLOCK_HEIGHT, Color.RED);
 
         Optional<? extends Block>[][] initialState = new Optional[][]{
                 {Optional.empty(), Optional.empty(), Optional.of(red.clone()), Optional.empty()},
@@ -63,22 +61,13 @@ class ITetrominoTest {
 
         assertArrayEquals(initialState, newCells);
 
-        printCells(newCells, rows, columns);
+        System.out.println(tetromino);
 
-    }
+        newCells = tetromino.rotateRight();;
 
-    private void printCells(Optional<? extends Block>[][] cells, int rows, int columns) {
-        System.out.println();
-        for(int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                Optional<? extends Block> cell = cells[i][j];
-                if (cell.isPresent()) {
-                    System.out.print("1");
-                } else {
-                    System.out.print("0");
-                }
-            }
-            System.out.println();
-        }
+        System.out.println(tetromino);
+        newCells = tetromino.rotateRight();;
+
+        System.out.println(tetromino);
     }
 }

@@ -19,10 +19,10 @@ class ZTetrominoTest {
         Optional<? extends Block>[][] cells = tetromino.getCells();
         int rows = cells.length;
         int columns = cells[0].length;
-        printCells(cells, rows, columns);
+        System.out.println(tetromino);
         Optional<? extends Block>[][] newCells = tetromino.rotateRight();;
 
-        printCells(newCells, rows, columns);
+        System.out.println(tetromino);
 
         Block blue = new Block(ZTetromino.WIDTH, ZTetromino.HEIGHT, Color.BLUE);
 
@@ -33,22 +33,12 @@ class ZTetrominoTest {
         };
 
         assertArrayEquals(initialState, newCells);
+        newCells = tetromino.rotateRight();;
 
-        printCells(newCells, rows, columns);
-    }
+        System.out.println(tetromino);
 
-    private void printCells(Optional<? extends Block>[][] cells, int rows, int columns) {
-        System.out.println();
-        for(int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                Optional<? extends Block> cell = cells[i][j];
-                if (cell.isPresent()) {
-                    System.out.print("1");
-                } else {
-                    System.out.print("0");
-                }
-            }
-            System.out.println();
-        }
+        newCells = tetromino.rotateRight();;
+
+        System.out.println(tetromino);
     }
 }

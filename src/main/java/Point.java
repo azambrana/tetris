@@ -33,4 +33,12 @@ public class Point {
     public void setColumn(int column) {
         this.column = column;
     }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "row=" + row +
+                ", column=" + column +
+                '}';
+    }
 }
