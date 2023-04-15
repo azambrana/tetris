@@ -1,4 +1,8 @@
 import org.junit.jupiter.api.Test;
+import views.pieces.Block;
+import views.pieces.ITetromino;
+import views.pieces.Piece;
+import views.models.Point;
 
 import java.awt.*;
 import java.util.Optional;
@@ -20,7 +24,7 @@ class ITetrominoTest {
         int rows = cells.length;
         int columns = cells[0].length;
 
-        Block red = new Block(Playfield.BLOCK_WIDTH, Playfield.BLOCK_HEIGHT, Color.RED);
+        Block red = new Block(Block.BLOCK_WIDTH, Block.BLOCK_HEIGHT, Color.RED);
 
         Optional<? extends Block>[][] initialState = new Optional[][]{
                 {Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()},
@@ -50,7 +54,7 @@ class ITetrominoTest {
 
         System.out.println(tetromino);
 
-        Block red = new Block(Playfield.BLOCK_WIDTH, Playfield.BLOCK_HEIGHT, Color.RED);
+        Block red = new Block(Block.BLOCK_WIDTH, Block.BLOCK_HEIGHT, Color.RED);
 
         Optional<? extends Block>[][] initialState = new Optional[][]{
                 {Optional.empty(), Optional.empty(), Optional.of(red.clone()), Optional.empty()},
@@ -69,5 +73,22 @@ class ITetrominoTest {
         newCells = tetromino.rotateRight();;
 
         System.out.println(tetromino);
+    }
+
+    @Test
+    public void testClone() {
+        Piece tetromino = ITetromino.create(new Point(0, 0)); // create method is the SUT
+        System.out.println(tetromino);
+        Piece clonedTetromino = tetromino.clone();
+
+        assertArrayEquals(tetromino.getCells(), clonedTetromino.getCells());
+
+        clonedTetromino.rotateRight();
+        System.out.println(tetromino);
+        tetromino.rotateRight();
+        System.out.println(tetromino);
+        System.out.println(clonedTetromino);
+
+        assertArrayEquals(tetromino.getCells(), clonedTetromino.getCells());
     }
 }

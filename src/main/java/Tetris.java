@@ -1,3 +1,5 @@
+import views.GameBoard;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -6,6 +8,7 @@ public class Tetris extends JFrame {
      SwingUtilities.invokeLater(() -> {
          Tetris tetris = new Tetris();
          GraphicsDevice[] screenDevices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+         // multi screen devices support
          tetris.setLocation(screenDevices[screenDevices.length>1?1:0].getDefaultConfiguration().getBounds().x, 0);
          tetris.setVisible(true);
      });

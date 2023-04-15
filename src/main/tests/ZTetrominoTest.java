@@ -1,10 +1,13 @@
 import org.junit.jupiter.api.Test;
+import views.pieces.Block;
+import views.pieces.Piece;
+import views.models.Point;
+import views.pieces.ZTetromino;
 
 import java.awt.*;
 import java.util.Optional;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ZTetrominoTest {
 
@@ -24,7 +27,7 @@ class ZTetrominoTest {
 
         System.out.println(tetromino);
 
-        Block blue = new Block(ZTetromino.WIDTH, ZTetromino.HEIGHT, Color.BLUE);
+        Block blue = new Block(Block.BLOCK_WIDTH, Block.BLOCK_HEIGHT, Color.BLUE);
 
         Optional<? extends Block>[][] initialState = new Optional[][]{
                 {Optional.empty(), Optional.empty(),            Optional.of(blue.clone())},

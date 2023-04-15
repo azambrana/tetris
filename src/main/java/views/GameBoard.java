@@ -1,7 +1,9 @@
-import javax.swing.*;
-import java.awt.*;
+package views;
 
-public class GameBoard extends JPanel  {
+import javax.swing.JPanel;
+import java.awt.Color;
+
+public class GameBoard extends JPanel {
 
     public GameBoard() {
         this.setBackground(Color.LIGHT_GRAY);

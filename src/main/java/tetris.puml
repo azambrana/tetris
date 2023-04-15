@@ -9,14 +9,13 @@ class GameBoard
 class Tetris
 class Grid
 
-Piece <|-- Tetromino
-Tetromino <|---- OTetromino
-Tetromino <|-- ITetromino
-Tetromino <|---- LTetromino
-Tetromino <|-- JTetromino
-Tetromino <|---- TTetromino
-Tetromino <|-- ZTetromino
-Tetromino <|---- STetromino
+Piece <|---- OTetromino
+Piece <|-- ITetromino
+Piece <|---- LTetromino
+Piece <|-- JTetromino
+Piece <|---- TTetromino
+Piece <|-- ZTetromino
+Piece <|---- STetromino
 
 Block -- Point
 Tetris *-- GameBoard

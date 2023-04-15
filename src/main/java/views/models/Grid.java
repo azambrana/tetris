@@ -1,5 +1,10 @@
+package views.models;
+
+import views.pieces.Block;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Grid {
     private int rowsCounts;
@@ -48,5 +53,9 @@ public class Grid {
 
     public List<Block> getBlocks() {
         return blocks;
+    }
+
+    public List<Point> getBoundaries() {
+        return getBlocks().stream().map(block -> new Point(block.getRow(), block.getColumn())).collect(Collectors.toList());
     }
 }
