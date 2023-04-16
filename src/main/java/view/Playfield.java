@@ -94,7 +94,7 @@ public class Playfield extends JPanel implements ActionListener, KeyListener {
         if ( !currentPiece.willCollideOnDown(boundaries, CollisionCheckerImpl.INSTANCE) ) {
             currentPiece.moveDown();
         } else {
-            placePiece(currentPiece);
+            dropPiece(currentPiece);
             updateCurrentPiece();
             invalidateDrawableShapes();
         }
@@ -110,7 +110,7 @@ public class Playfield extends JPanel implements ActionListener, KeyListener {
      *
      * @param currentPiece the current piece that cannot be moved to next bottom position
      */
-    private void placePiece(Piece currentPiece) {
+    private void dropPiece(Piece currentPiece) {
         this.grid.addBlocks(currentPiece.getBlocks().stream().map(block -> block.clone()).collect(Collectors.toList()));
     }
 
