@@ -1,14 +1,31 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+interface ActionListener
+interface KeyListener
+interface Cloneable
+interface Drawable
+interface Movable
+interface Collisionable
+interface PieceFactory
+interface CollisionChecker
+
 abstract Piece
-class Tetromino
 abstract Block
 class Point
 class GameBoard
 class Tetris
 class Grid
+class PieceFactoryImpl
 
+Cloneable <|.. Point
+Cloneable <|... Block
+Cloneable <|.. Piece
+Drawable <|.. Piece
+Collisionable <|.. Piece
+Movable <|-- Piece
+
+CollisionChecker <|-- CollisionCheckerImpl
 Piece <|---- OTetromino
 Piece <|-- ITetromino
 Piece <|---- LTetromino
@@ -17,10 +34,25 @@ Piece <|---- TTetromino
 Piece <|-- ZTetromino
 Piece <|---- STetromino
 
-Block -- Point
+Point "1" --* Block
 Tetris *-- GameBoard
 GameBoard *-- Playfield
 Playfield *-- Grid
+Playfield o-- PieceFactory
+Playfield o-- CollisionChecker
+KeyListener <|.. Playfield
+ActionListener <|.. Playfield
+
+PieceFactory <|.. PieceFactoryImpl
+
+class Playfield {
+    grid: Grid
+    currentPiece: Drawable
+    drawableShapes: List<Drawable>
+    pieceFactory: PieceFactory
+
+    dropPiece(currentPiece: Piece);
+}
 
 class Grid {
     blocks: List<Block>
@@ -29,12 +61,8 @@ class Grid {
     addBlocks(blocks:List<Block>)
 }
 
-abstract Board {
-    Block[20][10]
-}
-
 abstract Piece {
-    Optional<Block>[][]
+    cells: Optional<Block>[][]
     pivot: Point
     positions: Point[][]
 }
@@ -42,6 +70,9 @@ abstract Piece {
 class Point {
     row: int
     column: int
+
+    addRow(int)
+    addColumn(int)
 }
 
 abstract Block {
@@ -51,6 +82,22 @@ abstract Block {
     color: Color
 
     setPositon(Point)
+}
+
+interface PieceFactory {
+    createPiece(): T
+}
+
+class PieceFactoryImpl {
+    createPiece(): Optional<Piece>
+}
+
+interface CollisionChecker<P, T> {
+    check(List<P> boundaries, T piece)
+}
+
+class CollisionCheckerImpl<Point, Piece> {
+    check(boundaries: List<Point>, piece: Piece): boolean
 }
 
 @enduml
