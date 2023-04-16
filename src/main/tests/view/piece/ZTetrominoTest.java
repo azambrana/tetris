@@ -1,8 +1,11 @@
+package view.piece;
+
 import org.junit.jupiter.api.Test;
-import views.pieces.Block;
-import views.pieces.Piece;
-import views.models.Point;
-import views.pieces.ZTetromino;
+import util.PiecePrinter;
+import view.piece.Block;
+import view.piece.Piece;
+import model.Point;
+import view.piece.ZTetromino;
 
 import java.awt.*;
 import java.util.Optional;
@@ -18,14 +21,9 @@ class ZTetrominoTest {
         011
         000
         */
+        // Arrange
         Piece tetromino = ZTetromino.create(new Point(0, 0)); // create method is the SUT
-        Optional<? extends Block>[][] cells = tetromino.getCells();
-        int rows = cells.length;
-        int columns = cells[0].length;
-        System.out.println(tetromino);
-        Optional<? extends Block>[][] newCells = tetromino.rotateRight();;
-
-        System.out.println(tetromino);
+        PiecePrinter.prettyPrint(tetromino);
 
         Block blue = new Block(Block.BLOCK_WIDTH, Block.BLOCK_HEIGHT, Color.BLUE);
 
@@ -35,13 +33,11 @@ class ZTetrominoTest {
                 {Optional.empty(), Optional.of(blue.clone()),   Optional.empty()}
         };
 
+        // Act
+        Optional<? extends Block>[][] newCells = tetromino.rotateRight();;
+        PiecePrinter.prettyPrint(tetromino);
+
+        // Assert
         assertArrayEquals(initialState, newCells);
-        newCells = tetromino.rotateRight();;
-
-        System.out.println(tetromino);
-
-        newCells = tetromino.rotateRight();;
-
-        System.out.println(tetromino);
     }
 }

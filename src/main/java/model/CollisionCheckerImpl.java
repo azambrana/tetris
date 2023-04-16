@@ -1,6 +1,6 @@
-package views.models;
+package model;
 
-import views.pieces.Piece;
+import view.piece.Piece;
 
 import java.util.List;
 import java.util.stream.Collectors;

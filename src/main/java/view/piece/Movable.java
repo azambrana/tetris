@@ -1,4 +1,4 @@
-package views.pieces;
+package view.piece;
 
 public interface Movable {
     void moveDown();

@@ -1,4 +1,4 @@
-import views.GameBoard;
+import view.GameBoard;
 
 import javax.swing.*;
 import java.awt.*;

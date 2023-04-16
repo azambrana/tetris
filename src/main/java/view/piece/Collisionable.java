@@ -1,7 +1,7 @@
-package views.pieces;
+package view.piece;
 
-import views.models.CollisionChecker;
-import views.models.Point;
+import model.CollisionChecker;
+import model.Point;
 
 import java.util.List;
 

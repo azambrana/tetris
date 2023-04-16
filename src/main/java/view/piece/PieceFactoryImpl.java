@@ -1,7 +1,7 @@
-package views.pieces;
+package view.piece;
 
-import views.Playfield;
-import views.models.Point;
+import view.Playfield;
+import model.Point;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,12 +1,12 @@
-package views.pieces;
+package view.piece;
 
-import views.models.Point;
+import model.Point;
 
 import java.awt.*;
 import java.util.Optional;
 
 public class ZTetromino extends Piece {
-    public ZTetromino(Optional<? extends Block>[][] cells, views.models.Point pivot) {
+    public ZTetromino(Optional<? extends Block>[][] cells, model.Point pivot) {
         super(cells, pivot);
     }
 

@@ -1,6 +1,6 @@
-package views.models;
+package model;
 
-import views.pieces.Block;
+import view.piece.Block;
 
 import java.util.ArrayList;
 import java.util.List;

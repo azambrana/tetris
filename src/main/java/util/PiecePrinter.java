@@ -1,8 +1,8 @@
-package utils;
+package util;
 
-import views.pieces.Block;
-import views.pieces.Piece;
-import views.models.Point;
+import view.piece.Block;
+import view.piece.Piece;
+import model.Point;
 
 import java.util.Optional;
 

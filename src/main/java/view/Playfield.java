@@ -1,12 +1,12 @@
-package views;
+package view;
 
-import views.models.CollisionCheckerImpl;
-import views.pieces.Drawable;
-import views.pieces.Piece;
-import views.pieces.PieceFactory;
-import views.pieces.PieceFactoryImpl;
-import views.models.Point;
-import views.models.Grid;
+import model.CollisionCheckerImpl;
+import view.piece.Drawable;
+import view.piece.Piece;
+import view.piece.PieceFactory;
+import view.piece.PieceFactoryImpl;
+import model.Point;
+import model.Grid;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +19,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static views.pieces.Block.BLOCK_HEIGHT;
-import static views.pieces.Block.BLOCK_WIDTH;
+import static view.piece.Block.BLOCK_HEIGHT;
+import static view.piece.Block.BLOCK_WIDTH;
 
 public class Playfield extends JPanel implements ActionListener, KeyListener {
     public static final int ROWS = 20;

@@ -1,13 +1,13 @@
-package views.pieces;
+package view.piece;
 
-import views.models.Point;
+import model.Point;
 
 import java.awt.*;
 import java.util.Optional;
 
 public class ITetromino extends Piece {
 
-    public ITetromino(Optional<? extends Block>[][] cells, views.models.Point pivot) {
+    public ITetromino(Optional<? extends Block>[][] cells, model.Point pivot) {
         super(cells, pivot);
     }
 

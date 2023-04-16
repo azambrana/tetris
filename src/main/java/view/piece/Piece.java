@@ -1,7 +1,7 @@
-package views.pieces;
+package view.piece;
 
-import views.models.CollisionChecker;
-import views.models.Point;
+import model.CollisionChecker;
+import model.Point;
 
 import java.awt.*;
 import java.lang.reflect.Constructor;
@@ -14,17 +14,17 @@ public abstract class Piece implements Drawable, Movable, Collisionable, Cloneab
     private final int rows;
     private final int columns;
     private Optional<? extends Block>[][] cells;
-    private views.models.Point pivot;
-    private views.models.Point[][] positions;
+    private model.Point pivot;
+    private model.Point[][] positions;
 
-    public Piece(Optional<? extends Block>[][] cells, views.models.Point pivot) {
+    public Piece(Optional<? extends Block>[][] cells, model.Point pivot) {
         this.cells = cells;
         this.pivot = pivot;
 
         this.rows = cells.length;
         this.columns = cells[0].length;
 
-        positions = new views.models.Point[this.rows][this.columns];
+        positions = new model.Point[this.rows][this.columns];
         updatePositions(cells);
     }
 
@@ -33,7 +33,7 @@ public abstract class Piece implements Drawable, Movable, Collisionable, Cloneab
 
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {
-                final views.models.Point point = new views.models.Point(this.pivot.getRow() + row, this.pivot.getColumn() + column);
+                final model.Point point = new model.Point(this.pivot.getRow() + row, this.pivot.getColumn() + column);
                 positions[row][column] = point;
                 cells[row][column].ifPresent(block -> block.setPosition(point));
             }
@@ -101,28 +101,28 @@ public abstract class Piece implements Drawable, Movable, Collisionable, Cloneab
         updatePositions(cells);
     }
     @Override
-    public boolean willCollideOnRotate(List<views.models.Point> boundaries, CollisionChecker collisionChecker) {
+    public boolean willCollideOnRotate(List<model.Point> boundaries, CollisionChecker collisionChecker) {
         Piece clonedPiece = this.clone();
         clonedPiece.rotateRight();
         return collisionChecker.check(boundaries, clonedPiece);
     }
 
     @Override
-    public boolean willCollideOnDown(List<views.models.Point> boundaries, CollisionChecker collisionChecker) {
+    public boolean willCollideOnDown(List<model.Point> boundaries, CollisionChecker collisionChecker) {
         Piece clonedPiece = this.clone();
         clonedPiece.moveDown();
         return collisionChecker.check(boundaries, clonedPiece);
     }
 
     @Override
-    public boolean willCollideOnLeft(List<views.models.Point> boundaries, CollisionChecker collisionChecker) {
+    public boolean willCollideOnLeft(List<model.Point> boundaries, CollisionChecker collisionChecker) {
         Piece clonedPiece = this.clone();
         clonedPiece.moveLeft();
         return collisionChecker.check(boundaries, clonedPiece);
     }
 
     @Override
-    public boolean willCollideOnRight(List<views.models.Point> boundaries, CollisionChecker collisionChecker) {
+    public boolean willCollideOnRight(List<model.Point> boundaries, CollisionChecker collisionChecker) {
         Piece clonedPiece = this.clone();
         clonedPiece.moveRight();
         return collisionChecker.check(boundaries, clonedPiece);
@@ -149,7 +149,7 @@ public abstract class Piece implements Drawable, Movable, Collisionable, Cloneab
         Class<? extends Piece> clazz = this.getClass();
         try {
             Constructor<? extends Piece> constructor =
-                    clazz.getConstructor(Optional[][].class, views.models.Point.class);
+                    clazz.getConstructor(Optional[][].class, model.Point.class);
             Optional<? extends Block>[][] clonedCells = new Optional[rows][columns];
             for (int row = 0; row < rows; row++) {
                 for (int column = 0; column < columns; column++) {

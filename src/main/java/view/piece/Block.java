@@ -1,6 +1,6 @@
-package views.pieces;
+package view.piece;
 
-import views.models.Point;
+import model.Point;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

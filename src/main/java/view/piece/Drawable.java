@@ -1,4 +1,4 @@
-package views.pieces;
+package view.piece;
 
 import java.awt.Graphics2D;
 
