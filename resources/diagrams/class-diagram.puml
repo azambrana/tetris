@@ -23,9 +23,9 @@ Cloneable <|... Block
 Cloneable <|.. Piece
 Drawable <|.. Piece
 Collisionable <|.. Piece
-Movable <|-- Piece
+Movable <|.. Piece
 
-CollisionChecker <|-- CollisionCheckerImpl
+CollisionChecker <|.. CollisionCheckerImpl
 Piece <|---- OTetromino
 Piece <|-- ITetromino
 Piece <|---- LTetromino

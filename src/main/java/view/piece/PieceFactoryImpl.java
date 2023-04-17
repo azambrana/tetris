@@ -36,6 +36,7 @@ public class PieceFactoryImpl implements PieceFactory<Piece> {
         Class<? extends Piece> clazz = piecesTypes.get(randIndex);
         Point pivot = preferredPivots.get(clazz);
 
+        // Java Reflection
         try {
             Method createMethod = clazz.getMethod("create", Point.class);
             return Optional.ofNullable((Piece)createMethod.invoke(null, pivot.clone()));

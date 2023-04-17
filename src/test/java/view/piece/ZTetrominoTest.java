@@ -21,6 +21,7 @@ class ZTetrominoTest {
         011
         000
         */
+        // Unit Test Pattern: AAA=Arrange-Act-Assert
         // Arrange
         Piece tetromino = ZTetromino.create(new Point(0, 0)); // create method is the SUT
         PiecePrinter.prettyPrint(tetromino);
@@ -34,7 +35,7 @@ class ZTetrominoTest {
         };
 
         // Act
-        Optional<? extends Block>[][] newCells = tetromino.rotateRight();;
+        Optional<? extends Block>[][] newCells = tetromino.rotateRight(); // SUT = rotateRight, each 90 degrees clockwise
         PiecePrinter.prettyPrint(tetromino);
 
         // Assert

@@ -97,6 +97,7 @@ public class Playfield extends JPanel implements ActionListener, KeyListener {
             dropPiece(currentPiece);
             updateCurrentPiece();
             invalidateDrawableShapes();
+            // ToDo: refactor
         }
         this.repaint();
     }
